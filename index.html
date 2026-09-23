@@ -1,67 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SWF Files</title>
     <style>
-        body {
-            color: white;
-            background-color: #2d2d2d;
-            text-align: center;
-        }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
 
-        a:link,
-        a:visited,
-        a:hover,
-        a:active {
-            color: white;
-            font-size: 24px;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+        background: #111;
+        color: #aaa;
+        font:
+          14px system-ui,
+          sans-serif;
+      }
+
+      main {
+        flex: 1;
+        min-height: 0;
+      }
+
+      main > * {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 8px;
+      }
+
+      button {
+        background: none;
+        border: 0;
+        color: inherit;
+        font-size: 28px;
+        line-height: 1;
+        padding: 0 12px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        color: #fff;
+      }
+
+      #name {
+        min-width: 16em;
+        text-align: center;
+      }
     </style>
-    <!-- <script src="ruffle/ruffle.js"></script> -->
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-</head>
+    <script src="ruffle/ruffle.js"></script>
+  </head>
 
-<body>
-    <object width="640" height="480" data="1.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="2.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="3.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="androiddoll.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="balance.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="balling.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="blood.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="brot.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="car.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="car2.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="carne.swf">Alertnative Content Here</object><br>
-    <br><a href="page2.html" target="_blank">Visit Page 2</a><br><br>
-    <!-- <object width="640" height="480" data="chlee.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="colorballfountain.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="colorballspring.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="colorblockspring.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="colorcar.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="flash.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="godgivesusgifts_fullscreen.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="godgivesusgifts.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="hangingthing.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="lines.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="lines2.swf">Alertnative Content Here</object><br>
-    <br><a href="page3.html" target="_blank">Visit Page 3</a><br><br> -->
-    <!-- <object width="640" height="480" data="luescher.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="machine.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="myworld.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="nice_girl.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="oil.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="ouch.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="poof.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="pool.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="Primavera.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="shewasfoundtoolate.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="swingthing.swf">Alertnative Content Here</object><br>
-    <object width="640" height="480" data="tank.swf">Alertnative Content Here</object><br> -->
-</body>
+  <body>
+    <main></main>
+    <nav>
+      <button id="prev" aria-label="Previous">‹</button>
+      <span id="name"></span>
+      <button id="next" aria-label="Next">›</button>
+    </nav>
+    <script>
+      const files = [
+        "1.swf",
+        "2.swf",
+        "3.swf",
+        "androiddoll.swf",
+        "balance.swf",
+        "balling.swf",
+        "blood.swf",
+        "brot.swf",
+        "car.swf",
+        "car2.swf",
+        "carne.swf",
+        "chlee.swf",
+        "colorballfountain.swf",
+        "colorballspring.swf",
+        "colorblockspring.swf",
+        "colorcar.swf",
+        "flash.swf",
+        "godgivesusgifts.swf",
+        "godgivesusgifts_fullscreen.swf",
+        "hangingthing.swf",
+        "lines.swf",
+        "lines2.swf",
+        "luescher.swf",
+        "machine.swf",
+        "myworld.swf",
+        "nice_girl.swf",
+        "oil.swf",
+        "ouch.swf",
+        "poof.swf",
+        "pool.swf",
+        "Primavera.swf",
+        "shewasfoundtoolate.swf",
+        "swingthing.swf",
+        "tank.swf",
+      ];
 
+      // Too heavy for Ruffle: start paused, render cheaper and slower.
+      const heavy = new Set(["pool.swf", "Primavera.swf"]);
+      const heavyOptions = { autoplay: "off", quality: "low", frameRate: 12 };
+
+      const player = window.RufflePlayer.newest().createPlayer();
+      document.querySelector("main").append(player);
+      const name = document.getElementById("name");
+      let index = Math.max(0, files.indexOf(location.hash.slice(1)));
+
+      function show(i) {
+        index = (i + files.length) % files.length;
+        const file = files[index];
+        player.ruffle().load({
+          url: file,
+          autoplay: "on",
+          letterbox: "on",
+          ...(heavy.has(file) && heavyOptions),
+        });
+        name.textContent = `${index + 1} / ${files.length} · ${file}`;
+        history.replaceState(null, "", `#${file}`);
+      }
+
+      document.getElementById("prev").onclick = () => show(index - 1);
+      document.getElementById("next").onclick = () => show(index + 1);
+
+      document.addEventListener("keydown", (e) => {
+        // Once the SWF is clicked, it gets the keys (many SWFs use the keyboard).
+        if (e.target === player) return;
+        if (e.key === "ArrowLeft") show(index - 1);
+        else if (e.key === "ArrowRight") show(index + 1);
+        else if (e.key === " ") {
+          const ruffle = player.ruffle();
+          ruffle.suspended ? ruffle.resume() : ruffle.suspend();
+        } else return;
+        e.preventDefault();
+      });
+
+      show(index);
+    </script>
+  </body>
 </html>
